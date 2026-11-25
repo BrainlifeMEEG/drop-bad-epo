@@ -1,5 +1,47 @@
 # Drop Bad Epochs
 
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
+
+> **Drops bad epochs by index from MNE-Python epoched MEG/EEG data with Epochs.drop, taking indices from a parameter and/or a file, with before/after plots and an HTML report.**
+
+Reads epochs, collects the indices to remove from the drop parameter and from an optional file containing comma-separated indices (passed through the events field), removes them with mne.Epochs.drop and saves the remaining epochs together with a summary and figures. Use it to remove epochs flagged as bad by visual inspection or another QC step. Indices refer to the current epochs in the file (0-based).
+
+| | |
+|---|---|
+| 📥 **Inputs** | `neuro/meeg/mne/epochs` · `neuro/meg/fif-override` (optional) |
+| 📤 **Outputs** | `neuro/meeg/mne/epochs` |
+| 🐳 **Container** | `brainlifemeeg/mne:1.12.1` |
+| ⚙️ **Resources** | 16 GB memory · 2.25 h walltime |
+| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.798](https://doi.org/10.25663/brainlife.app.798) |
+
+#### 📥 Inputs
+
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `epo` | `neuro/meeg/mne/epochs` | yes | Epoched file to remove epochs from. |
+| `events` | `neuro/meg/fif-override` | no | SPECIAL HACK: events.tsv contains a list of bad trials as a single line with comma-separated indices to drop |
+
+#### 📤 Outputs
+
+| Output | Datatype | Description |
+|---|---|---|
+| `out_dir` | `neuro/meeg/mne/epochs` | MNE epochs after dropping |
+
+<details>
+<summary><b>⚙️ Parameters</b> (1)</summary>
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `drop` | string |  | Set epochs to remove by specifying indices to remove. Events are correspondingly modified. |
+
+</details>
+
+📚 **References used by this App:**
+- Hayashi S., Caron B. A., Heinsfeld A. S. et al. brainlife.io: a decentralized and open-source cloud platform to support neuroscience research. Nature Methods 21, 809-813 (2024). [doi:10.1038/s41592-024-02237-2](https://doi.org/10.1038/s41592-024-02237-2)
+- Gramfort A. et al. MEG and EEG data analysis with MNE-Python. Frontiers in Neuroscience 7:267 (2013). [doi:10.3389/fnins.2013.00267](https://doi.org/10.3389/fnins.2013.00267)
+
+<!-- brainlife-app:end -->
+
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.798-blue.svg)](https://doi.org/10.25663/brainlife.app.798)
 
 ## Description
